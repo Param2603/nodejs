@@ -1,31 +1,69 @@
-<!-- syntex of ejs : <%=   %> -->
- 
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Todo List</title>
-</head>
-<body>
-    <h1>Todo List</h1>
-
-    <div>        
-        <form action="/addData" method="post">
-        <label for="">Name:</label>
-        <input type="text" required> <br> <br>
-
-        <label for="">Email:</label>
-        <input type="email" required><br><br>
-
-        <label for="">Password:</label>
-        <input type="password" required><br><br>
-
-        <button>Edit</button>
-        <button>Submit</button>
-        </form>
-
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 min-h-screen p-6">
+    <h1 class="text-3xl font-bold text-center text-gray-800 mb-6">Todo List</h1>
+    
+    <form action="/add-data" method="post" 
+          class="max-w-md mx-auto bg-white shadow-md rounded-xl p-6 space-y-4">
         
-    </div>  
-</body>
+        <label class="block font-semibold text-gray-700">Name:</label>
+        <input name="name" type="text" placeholder="Enter Your Name"
+               class="w-full border rounded-md px-3 py-2 focus:ring focus:ring-blue-200" />  
+
+        <label class="block font-semibold text-gray-700">Email:</label>  
+        <input name="email" type="email" placeholder="Enter Your Email"
+               class="w-full border rounded-md px-3 py-2 focus:ring focus:ring-blue-200" />
+
+        <label class="block font-semibold text-gray-700">Password:</label>
+        <input name="password" type="text" placeholder="Enter Your Password"
+               class="w-full border rounded-md px-3 py-2 focus:ring focus:ring-blue-200" />
+
+        <label class="block font-semibold text-gray-700">Gender:</label>
+        <div class="flex items-center gap-4">
+          <label class="flex items-center gap-2">
+            <input name="gender" type="radio" value="male" class="text-blue-600" /> Male
+          </label>
+          <label class="flex items-center gap-2">
+            <input name="gender" type="radio" value="female" class="text-blue-600" /> Female
+          </label>
+        </div>
+    
+        <button class="w-full bg-blue-600 hover:bg-blue-700 px-4 text-white py-2 rounded-lg transition">
+          Submit
+        </button>
+    </form>
+
+    <br /><br />
+
+    <div class="max-w-xl mx-auto space-y-4">
+      <% array.forEach((element,index)=>{ %>
+        <div class="bg-white p-6 rounded-xl shadow-md">
+          <p class="text-gray-800"><span class="font-semibold">Name:</span> <%= element.name %></p>
+          <p class="text-gray-800"><span class="font-semibold">Email:</span> <%= element.email %></p>
+          <p class="text-gray-800"><span class="font-semibold">Password:</span> <%= element.password %></p>
+          <p class="text-gray-800"><span class="font-semibold">Gender:</span> <%= element.gender %></p>
+          <div class="mt-4 flex gap-3">
+            <a href="/edit/<%= index %>">
+              <button type="button" 
+                      class="bg-yellow-500 hover:bg-yellow-600 text-white px-4 py-2 rounded-[10px] transition">
+                Edit
+              </button>
+            </a>
+            <a href="/delete/<%= index %>">
+              <button type="button" 
+                      class="bg-red-600 hover:bg-red-700 text-white px-4 py-2 rounded-[10px] transition">
+                Delete
+              </button>
+            </a>
+          </div>
+        </div>
+      <% }) %>
+    </div>
+  </body>
 </html>

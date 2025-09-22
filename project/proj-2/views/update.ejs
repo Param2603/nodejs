@@ -1,15 +1,53 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    <h1>Todo Data</h1>
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Updated List</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+  </head>
+  <body class="bg-gray-100 min-h-screen flex flex-col items-center p-6">
+    
     <div>
-        
+      <h1 class="text-3xl font-bold text-gray-800 mb-6">Update Data</h1>
     </div>
-</body>
+
+    <div class="w-full max-w-md bg-white shadow-md rounded-xl p-6">
+      <form action="/update-data" method="post" class="space-y-4">
+        
+        <input type="hidden" name="updateId" value="<%= updateId %>" />
+
+        <label class="block font-semibold text-gray-700">Name:</label>
+        <input name="name" type="text" value="<%= updateData.name %>"
+               class="w-full border rounded-md px-3 py-2 focus:ring focus:ring-blue-200" /> 
+
+        <label class="block font-semibold text-gray-700">Email:</label>
+        <input name="email" type="email" value="<%= updateData.email %>"
+               class="w-full border rounded-md px-3 py-2 focus:ring focus:ring-blue-200" />
+
+        <label class="block font-semibold text-gray-700">Password:</label>
+        <input name="password" type="text" value="<%= updateData.password %>"
+               class="w-full border rounded-md px-3 py-2 focus:ring focus:ring-blue-200" />
+            
+        <label class="block font-semibold text-gray-700">Gender:</label>
+        <div class="flex items-center gap-6">
+          <label class="flex items-center gap-2">
+            <input name="gender" type="radio" value="male"
+                   <%= updateData.gender=== "male"? "checked" : "" %>
+                   class="text-blue-600" /> Male
+          </label>
+          <label class="flex items-center gap-2">
+            <input name="gender" type="radio" value="female"
+                   <%= updateData.gender === "female" ? "checked" : "" %>
+                   class="text-blue-600" /> Female
+          </label>
+        </div>
+
+        <button class="w-full bg-blue-600 hover:bg-blue-700 text-white py-2 rounded-lg transition">
+          Submit
+        </button>
+      </form>
+    </div>
+
+  </body>
 </html>
