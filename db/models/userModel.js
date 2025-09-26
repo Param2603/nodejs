@@ -1,4 +1,4 @@
-const mangoose = require("mangoose")
+const mangoose = require("mangoose");
 
 const userSchema = new mangoose.schema({
     userName: {
@@ -11,5 +11,5 @@ const userSchema = new mangoose.schema({
     },
 })
 
-const userModel = mongoose.model("user", userSchema);
+const userModel = mangoose.model("user", userSchema);
 module.exports = { userModel };

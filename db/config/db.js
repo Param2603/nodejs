@@ -1,7 +1,7 @@
-const mongoose = require("mongoose");
+const mangoose = require("mangoose")
 
 const dbconnect = async () => {
-  await mongoose.connect("mongodb://127.0.0.1/paramProj");
+  await mangoose.connect("mongodb://127.0.0.1/paramProj");
   console.log("database is connected");
 };
 
