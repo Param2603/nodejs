@@ -8,6 +8,8 @@ app.set("view engine", "ejs")
 app.use(express.urlencoded({extended:true}))
 app.use("/", router)
 
+
+
 app.listen(PORT, (err) => {
     if(err){
         console.log("server is not connected")
