@@ -11,6 +11,6 @@ app.listen(process.env.PORT, (err) => {
     if(err){
         console.log("server is not connected")
     }
-    // connectDB()
+    
     console.log("server is connected", process.env.PORT)
 })
