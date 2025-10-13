@@ -1,11 +1,56 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
-    
+    <h1>Booking Form</h1>
+
+    <table border="">
+        <form action="/addBook" method="post">
+            <tr>
+                <td>Book Name</td>
+                <td><input type="text" name="bookName" placeholder="Enter Your Book Name"></td>
+            </tr>
+            <tr>
+                <td>Image URL</td>
+                <td><input type="text" name="bookImage" placeholder="Enter Your Book Image URL"></td>
+            </tr>
+            <tr>
+                <td>Author Name</td>
+                <td><input type="text" name="bookAuthor" placeholder="Enter Your Book Author Name"></td>
+            </tr>
+            <tr>
+                <td>Price</td>
+                <td><input type="text" name="bookPrice" placeholder="Enter Your Book Price"></td>
+            </tr>
+            <tr>
+                <td>Description</td>
+                <td><input type="text" name="bookSummary" placeholder="Enter Your Book Description"></td>
+            </tr>
+            <tr>
+                <td></td>
+                <td><button>Submit</button></td>
+            </tr>
+        </form>
+    </table>
+    <br>
+    <br>
+
+    <table border="">
+        <thead>
+            <th>Book Name</th>
+            <th>Image</th>
+            <th>Author</th>
+            <th>Price</th>
+            <th>Description</th>
+            <th>Actions</th>
+        </thead>
+    </table>
 </body>
+
 </html>
