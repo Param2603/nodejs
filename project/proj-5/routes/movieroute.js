@@ -1,5 +1,5 @@
 const express = require("express")
-const { movieModel } = require("../models/movieModel")
+const { moviemodel } = require("../models/moviemodel")
 const fs = require("fs")
 const path = require("path")
 const { upload } = require("../middleware/multer")
@@ -7,7 +7,7 @@ const movieRouter = express()
 
 movieRouter.get("/", async (req, res) => {
     try {
-        let movieData = await movieModel.find({})
+        let movieData = await moviemodel.find({})
         return res.render("movie", { movieData })
     } catch (err) {
         console.log(err)
@@ -20,7 +20,7 @@ movieRouter.post("/add", upload, async (req, res) => {
             req.body.image = "/uploads" + "/" + req.file.filename
         }
         // console.log(req.file)
-        await movieModel.create(req.body)
+        await moviemodel.create(req.body)
         console.log(req.body)
         console.log("Movie added successfully")
         return res.redirect("/")
@@ -33,12 +33,12 @@ movieRouter.post("/add", upload, async (req, res) => {
 movieRouter.get("/delete/:id", async (req, res) => {
     const id = req.params.id
 
-    const deleteData = await movieModel.findById(id)
+    const deleteData = await moviemodel.findById(id)
     console.log(deleteData)
     try {
         console.log(deleteData.image)
         fs.unlinkSync(path.join(__dirname, "..", deleteData.image))
-        await movieModel.findByIdAndDelete(id)
+        await moviemodel.findByIdAndDelete(id)
         console.log("User Deleted Successfully")
         return res.redirect("/")
     } 
@@ -52,7 +52,7 @@ movieRouter.get("/edit/:id", async (req, res) => {
     try {
         const id = req.params.id
 
-        let editData = await movieModel.findById(id)
+        let editData = await moviemodel.findById(id)
         console.log(editData)
         return res.render("updateMovie", { editData })
     } 
@@ -64,13 +64,13 @@ movieRouter.get("/edit/:id", async (req, res) => {
 
 movieRouter.post("/update", upload, async (req, res) => {
     try {
-        let response = await movieModel.findById(req.body.id)
+        let response = await moviemodel.findById(req.body.id)
   
         if (req.file) {
             fs.unlinkSync(path.join(__dirname, "..", response.image))
             req.body.image = "/uploads" + "/" + req.file.filename
         }
-        await movieModel.findByIdAndUpdate(req.body.id, req.body)
+        await moviemodel.findByIdAndUpdate(req.body.id, req.body)
         console.log("Movie Updated Successfully")
         return res.redirect("/")
     } 
