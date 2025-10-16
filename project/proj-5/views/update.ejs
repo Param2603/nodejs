@@ -18,7 +18,7 @@
       <!-- Movie Title -->
       <div>
         <label class="block text-gray-700 font-medium mb-2">Movie Name</label>
-        <input type="text" name="movieName" value="<%= editData.title %>"
+        <input type="text" name="movieName" value="<%= editData.movieName %>"
           class="w-full border border-gray-300 rounded-lg px-4 py-2 focus:ring-2 focus:ring-indigo-500" required />
       </div>
 
@@ -50,7 +50,7 @@
         <div class="flex items-center gap-4">
           <input type="file" name="image"
             class="border border-gray-300 rounded-lg px-4 py-2 bg-gray-50 cursor-pointer focus:ring-2 focus:ring-indigo-500" />
-          <img src="<%= editData.movieImg %>" alt="Movie Image" class="w-24 h-24 object-cover rounded-lg shadow-md border">
+          <img src="<%= editData.image %>" alt="Movie Image" class="w-24 h-24 object-cover rounded-lg shadow-md border">
         </div>
       </div>
 

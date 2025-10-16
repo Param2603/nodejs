@@ -8,7 +8,7 @@ const movieRouter = express()
 movieRouter.get("/", async (req, res) => {
     try {
         let movieData = await moviemodel.find({})
-        return res.render("movie", { movieData })
+        return res.render("home", { movieData })
     } catch (err) {
         console.log(err)
     }
