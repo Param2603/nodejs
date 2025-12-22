@@ -1,11 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
+    <meta charset="UTF-8" />
+    <title>Create Task</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+
+    <!-- Tailwind CDN -->
+    <script src="https://cdn.tailwindcss.com"></script>
+
+    <!-- Custom animation -->
+    <style>
+        @keyframes fadeSlide {
+            from {
+                opacity: 0;
+                transform: translateY(40px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        .fade-slide {
+            animation: fadeSlide 0.8s ease-out;
+        }
+    </style>
 </head>
-<body>
-    
+
+<body class="min-h-screen bg-cover bg-center flex items-center justify-center"
+      style="background-image: url('https://images.unsplash.com/photo-1522202176988-66273c2fd55f');">
+
+    <!-- Overlay -->
+    <div class="absolute inset-0 bg-black/60"></div>
+
+    <!-- Form Card -->
+    <div class="relative w-full max-w-md mx-4 bg-white/90 backdrop-blur-lg rounded-2xl shadow-2xl p-8 fade-slide
+                transition-transform duration-300 hover:scale-[1.02]">
+
+        <h2 class="text-3xl font-bold text-center text-gray-800 mb-6">
+            Create New Task
+        </h2>
+
+        <form action="/tasks" method="POST" class="space-y-5">
+
+            <!-- Title -->
+            <div>
+                <label class="block text-gray-700 font-medium mb-1">
+                    Task Title
+                </label>
+                <input 
+                    type="text" 
+                    name="title" 
+                    required
+                    placeholder="Enter task title"
+                    class="w-full px-4 py-2 rounded-lg border border-gray-300 
+                           focus:outline-none focus:ring-2 focus:ring-indigo-500
+                           transition duration-200"
+                />
+            </div>
+
+            <!-- Description -->
+            <div>
+                <label class="block text-gray-700 font-medium mb-1">
+                    Description
+                </label>
+                <textarea 
+                    name="description" 
+                    rows="4"
+                    required
+                    placeholder="Enter task description"
+                    class="w-full px-4 py-2 rounded-lg border border-gray-300 
+                           focus:outline-none focus:ring-2 focus:ring-indigo-500
+                           transition duration-200 resize-none"
+                ></textarea>
+            </div>
+
+            <!-- Hidden User ID (from session/login) -->
+            <!-- <input type="hidden" name="user" value="<%= userId %>"> -->
+
+            <!-- Submit Button -->
+            <button 
+                type="submit"
+                class="w-full py-2 rounded-lg bg-indigo-600 text-white font-semibold
+                       hover:bg-indigo-700 active:scale-95
+                       transition-all duration-300 shadow-lg">
+                Create Task
+            </button>
+
+        </form>
+
+        <!-- Footer -->
+        <p class="text-center text-sm text-gray-600 mt-5">
+            Manage your tasks efficiently 🚀
+        </p>
+    </div>
+
 </body>
 </html>
