@@ -1,11 +1,12 @@
 const express = require("express");
-const { listTasks, addTask, deleteTask } = require("../controllers/taskController");
-const { isAuth } = require("../middleware/authMiddleware");
+const { listTasks, addTask, deleteTask, renderTaskForm } = require("../controllers/taskController");
+const { isAuth } = require("../middleware/authmiddleware");
 
-const taskRouter = express.Router();
+const router = express.Router();
 
-taskRouter.get("/", isAuth, listTasks);
-taskRouter.post("/", isAuth, addTask);   // ✅ FIX HERE
-taskRouter.get("/delete/:id", isAuth, deleteTask);
+router.get("/", isAuth, listTasks);
+router.get("/create", isAuth, renderTaskForm);
+router.post("/add", isAuth, addTask);
+router.get("/delete/:id", isAuth, deleteTask);
 
-module.exports = taskRouter;
+module.exports = router;

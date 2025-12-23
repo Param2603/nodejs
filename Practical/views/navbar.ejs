@@ -6,28 +6,13 @@
     <title>Document</title>
 </head>
 <body>
-    <nav class="bg-black/70 backdrop-blur-md text-white px-6 py-4 flex justify-between items-center shadow-lg">
-    <h1 class="text-xl font-bold tracking-wide hover:text-indigo-400 transition">
-        Task Manager
-    </h1>
+    <nav class="bg-black/70 text-white px-6 py-4 flex justify-between">
+    <h1 class="text-xl font-bold">Task Manager</h1>
 
     <div class="space-x-4">
-        <a href="/tasks"
-           class="hover:text-indigo-400 transition duration-200">
-            My Tasks
-        </a>
-
-        <% if (user.role === "admin") { %>
-            <a href="/tasks"
-               class="hover:text-red-400 transition duration-200">
-                All User Tasks
-            </a>
-        <% } %>
-
-        <a href="/logout"
-           class="bg-red-500 px-3 py-1 rounded-lg hover:bg-red-600 transition active:scale-95">
-            Logout
-        </a>
+        <a href="/tasks">My Tasks</a>
+        <a href="/tasks/create">Create Task</a>
+        <a href="/logout" class="text-red-400">Logout</a>
     </div>
 </nav>
 

@@ -8,34 +8,27 @@
 <body class="min-h-screen bg-cover bg-center"
       style="background-image:url('https://images.unsplash.com/photo-1508780709619-79562169bc64');">
 
-<%- include("navbar", { user }) %>
+    <%- include("navbar", { user: user }) %>
 
-<div class="max-w-4xl mx-auto mt-10 p-6 bg-black/40 backdrop-blur-lg rounded-xl">
+    <div class="max-w-4xl mx-auto mt-10 p-6 bg-black/40 backdrop-blur-lg rounded-xl">
 
-    <!-- Add Task -->
-    <form action="/tasks/add" method="POST"
-          class="bg-white/90 p-4 rounded-xl mb-6 shadow space-y-3">
+        <form action="/tasks/add" method="POST"
+              class="bg-white/90 p-4 rounded-xl mb-6 shadow space-y-3">
 
-        <input name="title" placeholder="Task Title" required
-               class="w-full border p-2 rounded">
+            <input name="title" placeholder="Task Title" required class="w-full border p-2 rounded">
+            <textarea name="description" placeholder="Task Description" required class="w-full border p-2 rounded"></textarea>
 
-        <textarea name="description" placeholder="Task Description" required
-                  class="w-full border p-2 rounded"></textarea>
+            <button class="bg-indigo-600 text-white px-4 py-2 rounded hover:bg-indigo-700">
+                Add Task
+            </button>
+        </form>
 
-        <button class="bg-indigo-600 text-white px-4 py-2 rounded
-                       hover:bg-indigo-700 transition active:scale-95">
-            Add Task
-        </button>
-    </form>
+        <div class="space-y-4">
+            <% tasks.forEach(task => { %>
+                <%- include("taskItem", { task: task, user: user }) %>
+            <% }) %>
+        </div>
 
-    <!-- Task Items -->
-    <div class="space-y-4">
-        <% tasks.forEach(task => { %>
-            <%- include("taskItem", { task, user }) %>
-        <% }) %>
     </div>
-
-</div>
-
 </body>
 </html>
